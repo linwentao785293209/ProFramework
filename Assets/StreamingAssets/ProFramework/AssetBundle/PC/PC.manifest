@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+CRC: 3530302273
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ui
+      Dependencies: {}
+    Info_1:
+      Name: audios
+      Dependencies: {}
+    Info_2:
+      Name: materials
+      Dependencies: {}
+    Info_3:
+      Name: models
+      Dependencies:
+        Dependency_0: materials
+    Info_4:
+      Name: scriptableobjects
+      Dependencies: {}
+    Info_5:
+      Name: textures
+      Dependencies: {}

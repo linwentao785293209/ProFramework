@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 3128177869
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: cf5cd39d8bd06bfd822da139dc0ac0f3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 558bea3fcd93c053760d7e9103f9dffa
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: cf5cd39d8bd06bfd822da139dc0ac0f3
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: cfea391ad4904f56a9f51392bd4866ee, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Editor/ProFramework/scriptableobjects/CubeTest.asset
+Dependencies: []

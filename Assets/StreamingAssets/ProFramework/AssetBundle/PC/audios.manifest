@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 3900730093
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 039f2f4584e5074390b2dd6988749f68
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 9a2ca7bdbd1871f7131daf57de908e0c
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 039f2f4584e5074390b2dd6988749f68
+HashAppended: 0
+ClassTypes:
+- Class: 83
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Editor/ProFramework/audios/SoundEffects/SoundEffectsTest.mp3
+- Assets/Editor/ProFramework/audios/BackgroundMusics/BackgroundMusicTest.mp3
+Dependencies: []
