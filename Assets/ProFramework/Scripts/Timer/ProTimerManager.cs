@@ -167,7 +167,7 @@ namespace ProFramework
             var timerDictionary = isRealTime ? _realTimerDictionary : _normalTimerDictionary;
             if (timerDictionary.ContainsKey(keyID))
             {
-                ProLog.LogWarning($"Timer with keyID {keyID} already exists.");
+                ProLog.LogWarning($"计时器的key：{keyID}已经存在！");
                 return;
             }
 
