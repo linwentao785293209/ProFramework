@@ -1,7 +1,7 @@
 ﻿namespace ProFrameworkTest
 {
     // JsonUtility需要加特性
-    // [System.Serializable]
+    [System.Serializable]
     public class JsonTestItemClass
     {
         public int id = 1;

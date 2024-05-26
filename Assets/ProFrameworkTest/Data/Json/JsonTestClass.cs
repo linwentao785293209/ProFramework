@@ -5,7 +5,7 @@ using UnityEngine;
 namespace ProFrameworkTest
 {
     // JsonUtility需要加特性
-    // [System.Serializable] 
+    [System.Serializable] 
     public class JsonTestClass
     {
         // 有符号类型
@@ -29,7 +29,7 @@ namespace ProFrameworkTest
         public bool boolValue = true;
 
         // JsonUtility私有变量需要加特性
-        // [SerializeField]
+        [SerializeField]
         private bool boolValue2 = false;
         public char charValue = 'A';
         public string stringValue = "Hello, Json!";
