@@ -1,7 +1,9 @@
 ﻿using System;
-using LitJson;
 using System.IO;
 using UnityEngine;
+using LitJson;
+using Newtonsoft.Json;
+
 
 namespace ProFramework
 {
@@ -11,7 +13,7 @@ namespace ProFramework
         {
         }
 
-        private EProJsonType _jsonType = EProJsonType.LitJson;
+        private EProJsonType _jsonType = EProJsonType.NewtonsoftJson;
 
 
         private string streamingAssetsPath => $"{Application.streamingAssetsPath}/{ProConst.JsonDataPath}";
@@ -47,16 +49,17 @@ namespace ProFramework
                 case EProJsonType.LitJson:
                     jsonStr = JsonMapper.ToJson(value);
                     break;
+                case EProJsonType.NewtonsoftJson:
+                    jsonStr = JsonConvert.SerializeObject(value);
+                    break;
             }
 
             File.WriteAllText(path, jsonStr);
         }
 
-
         public override T Load<T>(string key)
         {
             string path = persistentDataPath + key + ".json";
-
 
             if (!File.Exists(path))
             {
@@ -69,7 +72,6 @@ namespace ProFramework
                 }
             }
 
-
             string jsonStr = File.ReadAllText(path);
             T value = default(T);
 
@@ -80,6 +82,9 @@ namespace ProFramework
                     break;
                 case EProJsonType.LitJson:
                     value = JsonMapper.ToObject<T>(jsonStr);
+                    break;
+                case EProJsonType.NewtonsoftJson:
+                    value = JsonConvert.DeserializeObject<T>(jsonStr);
                     break;
             }
 
@@ -114,6 +119,9 @@ namespace ProFramework
                     break;
                 case EProJsonType.LitJson:
                     value = JsonMapper.ToObject(jsonStr, type);
+                    break;
+                case EProJsonType.NewtonsoftJson:
+                    value = JsonConvert.DeserializeObject(jsonStr, type);
                     break;
             }
 

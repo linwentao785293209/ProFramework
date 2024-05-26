@@ -7,5 +7,6 @@
     {
         JsonUtility,
         LitJson,
+        NewtonsoftJson
     }
 }
