@@ -8,7 +8,7 @@ namespace ProFramework
 
         public abstract void Save(string key, object value);
 
-        public abstract T1 Load<T1>(string key) where T1 : new();
+        public abstract T1 Load<T1>(string key) where T1 : class, new();
 
         public abstract object Load(string key, Type type);
     }

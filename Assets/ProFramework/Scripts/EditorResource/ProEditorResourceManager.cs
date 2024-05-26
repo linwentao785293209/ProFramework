@@ -15,7 +15,7 @@ namespace ProFramework
     public class ProEditorResourceManager : ProSingletonInSystem<ProEditorResourceManager>, IProLoadResourceManager
     {
         //用于放置需要打包进AB包中的资源路径 
-        private string editorResourcePath => ProConst.EditorResourcePath;
+        private string editorAssetBundle => ProConst.EditorAssetBundlePath;
 
         private ProEditorResourceManager()
         {
@@ -38,7 +38,7 @@ namespace ProFramework
             else if (typeof(T) == typeof(SpriteAtlas))
                 suffixName = ".spriteatlas";
 
-            string path = $"{editorResourcePath}{assetBundleName}/{resourceName}{suffixName}";
+            string path = $"{editorAssetBundle}{assetBundleName}/{resourceName}{suffixName}";
 
             LoadEditorResource<T>(path, callBack);
         #else
@@ -75,7 +75,7 @@ namespace ProFramework
         #if UNITY_EDITOR
             // 应当加载整个Sprite Atlas，而非所有子资源
             SpriteAtlas spriteAtlas =
-                AssetDatabase.LoadAssetAtPath<SpriteAtlas>(editorResourcePath + atlasPath + ".spriteatlas");
+                AssetDatabase.LoadAssetAtPath<SpriteAtlas>(editorAssetBundle + atlasPath + ".spriteatlas");
 
             if (spriteAtlas == null)
             {
@@ -108,7 +108,7 @@ namespace ProFramework
 
             // 加载Sprite Atlas
             SpriteAtlas spriteAtlas =
-                AssetDatabase.LoadAssetAtPath<SpriteAtlas>(editorResourcePath + atlasPath + ".spriteatlas");
+                AssetDatabase.LoadAssetAtPath<SpriteAtlas>(editorAssetBundle + atlasPath + ".spriteatlas");
 
             if (spriteAtlas == null)
             {

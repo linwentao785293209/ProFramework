@@ -8,7 +8,7 @@ namespace ProFramework
 
         void Save(string key, object value);
 
-        T Load<T>(string key) where T : new();
+        T Load<T>(string key) where T :class, new();
 
         object Load(string key, Type type);
     }
