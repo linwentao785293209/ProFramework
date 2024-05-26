@@ -52,5 +52,11 @@
         public static readonly string XmlDataPath =
             $"{ProFramework}/{Data}/{Xml}/";
         
+        
+        public const string Json = "Json";
+        
+        public static readonly string JsonDataPath =
+            $"{ProFramework}/{Data}/{Json}/";
+        
     }
 }

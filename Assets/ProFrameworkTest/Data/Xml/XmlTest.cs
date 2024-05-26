@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ProFrameworkTest
 {
-    public class XmlDataMgrTest : MonoBehaviour
+    public class XmlTest : MonoBehaviour
     {
         void Update()
         {

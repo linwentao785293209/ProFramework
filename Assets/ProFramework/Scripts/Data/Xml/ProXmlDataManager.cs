@@ -56,6 +56,7 @@ namespace ProFramework
 
                 if (!File.Exists(path))
                 {
+                    ProLog.LogWarning($"文件{key}未找到,返回默认实例！");
                     return Activator.CreateInstance(type);
                 }
             }

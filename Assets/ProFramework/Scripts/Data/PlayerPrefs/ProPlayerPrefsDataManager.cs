@@ -167,7 +167,7 @@ namespace ProFramework
 
         public override object Load(string key, Type type)
         {
-            object data = Activator.CreateInstance(type);
+            object value = Activator.CreateInstance(type);
             FieldInfo[] infos = type.GetFields();
 
             string tempKey = "";
@@ -178,10 +178,10 @@ namespace ProFramework
                 tempFieldInfo = infos[i];
                 tempKey = key + "_" + type.Name +
                           "_" + tempFieldInfo.FieldType.Name + "_" + tempFieldInfo.Name;
-                tempFieldInfo.SetValue(data, LoadField(tempKey, tempFieldInfo.FieldType));
+                tempFieldInfo.SetValue(value, LoadField(tempKey, tempFieldInfo.FieldType));
             }
 
-            return data;
+            return value;
         }
 
         private object LoadField(string key, Type type)
