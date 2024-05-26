@@ -2,7 +2,7 @@
 {
     public static class ProConst
     {
-        public const string FrameworkName = "ProFramework";
+        public const string ProFramework = "ProFramework";
         public const string Version = "0.0.1";
 
         public const int DefaultMaxNum = 1000; // 默认最大数量
@@ -20,14 +20,14 @@
         public const string Ui = "ui";
 
 
-        public static readonly string ResourcePath = $"{FrameworkName}/";
+        public static readonly string ResourcePath = $"{ProFramework}/";
 
         public static readonly string EditorPath = $"Assets/Editor";
-        public static readonly string EditorResourcePath = $"{EditorPath}/{FrameworkName}/";
+        public static readonly string EditorResourcePath = $"{EditorPath}/{ProFramework}/";
 
-        public const string AssetBundleFolderName = "AssetBundle";
+        public const string AssetBundle = "AssetBundle";
 
-        private static string AssetBundlePlatformFolderName
+        private static string AssetBundlePlatform
         {
             get
             {
@@ -42,6 +42,15 @@
         }
 
         public static readonly string AssetBundlePath =
-            $"{FrameworkName}/{AssetBundleFolderName}/{AssetBundlePlatformFolderName}/";
+            $"{ProFramework}/{AssetBundle}/{AssetBundlePlatform}/";
+        
+        
+        public const string Data = "Data";
+        
+        public const string Xml = "Xml";
+        
+        public static readonly string XmlDataPath =
+            $"{ProFramework}/{Data}/{Xml}/";
+        
     }
 }
