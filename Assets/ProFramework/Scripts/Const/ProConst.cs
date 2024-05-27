@@ -8,7 +8,7 @@
         // 对象池
         public const int GameObjectPoolDefaultMaxNum = 1000; // 游戏对象池默认最大数量
 
-        // AB包
+        // 常用AB包
         public const string Animations = "animations";
         public const string Animators = "animators";
         public const string Audios = "audios";
@@ -16,11 +16,12 @@
         public const string Fonts = "fonts";
         public const string Materials = "materials";
         public const string Models = "models";
+        public const string Prefabs = "prefabs";
         public const string ScriptableObjects = "scriptableobjects";
         public const string Textures = "textures";
         public const string Ui = "ui";
 
-        
+
         public static readonly string EditorPath = $"Assets/Editor";
         public static readonly string EditorAssetBundlePath = $"{EditorPath}/{AssetBundle}/";
 
@@ -40,8 +41,7 @@
             }
         }
 
-        public static readonly string AssetBundlePath =
-            $"{ProFramework}/{AssetBundle}/{AssetBundlePlatform}/";
+        public static readonly string AssetBundlePath = $"{AssetBundle}/{AssetBundlePlatform}/";
 
 
         public const string Data = "Data";
@@ -62,7 +62,7 @@
 
         public static readonly string BinaryDataPath =
             $"{ProFramework}/{Data}/{Binary}/";
-        
+
         public const string Configs = "Configs";
         public const string Excel = "Excel";
         public const string File = "File";
@@ -73,8 +73,5 @@
         public static readonly string ExcelFilePath = $"{ExcelPath}{File}/";
         public static readonly string ExcelContainerPath = $"{ExcelPath}{Container}/";
         public static readonly string ExcelDataClassPath = $"{ExcelPath}{DataClass}/";
-
-        
-        
     }
 }

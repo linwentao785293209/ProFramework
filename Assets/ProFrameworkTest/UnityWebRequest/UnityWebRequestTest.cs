@@ -15,7 +15,7 @@ namespace ProFrameworkTest
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 ProUnityWebRequestManager.Instance.LoadResource<string>(
-                    "file://" + Application.streamingAssetsPath + "/ProFramework/Test/test.txt",
+                    "file://" + Application.streamingAssetsPath + "/Test/test.txt",
                     (str) => { ProLog.LogDebug($"文本信息是{str}"); }, (() => { ProLog.LogDebug($"加载失败"); }));
             }
 
@@ -23,22 +23,23 @@ namespace ProFrameworkTest
             if (Input.GetKeyDown(KeyCode.W))
             {
                 ProUnityWebRequestManager.Instance.LoadResource<byte[]>(
-                    "file://" + Application.streamingAssetsPath + "/ProFramework/Test/test.txt",
+                    "file://" + Application.streamingAssetsPath + "/Test/test.txt",
                     (bytes) => { ProLog.LogDebug($"字节数组长度是{bytes.Length}"); }, (() => { ProLog.LogDebug($"加载失败"); }));
             }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
                 ProUnityWebRequestManager.Instance.LoadResource<Texture>(
-                    "file://" + Application.streamingAssetsPath + "/ProFramework/Test/head.png",
+                    "file://" + Application.streamingAssetsPath + "/Test/head.png",
                     (texture) => { rawImage.texture = texture; }, (() => { ProLog.LogDebug($"加载失败"); }));
             }
 
             if (Input.GetKeyDown(KeyCode.R))
             {
                 ProUnityWebRequestManager.Instance.LoadResource<AssetBundle>(
-                    "file://" + Application.streamingAssetsPath + "/ProFramework/AssetBundle/PC/audios",
-                    (assetBundle) => { ProLog.LogDebug($"{assetBundle.name}"); }, (() => { ProLog.LogDebug($"加载失败"); }));
+                    "file://" + Application.streamingAssetsPath + "/AssetBundle/PC/audios",
+                    (assetBundle) => { ProLog.LogDebug($"{assetBundle.name}"); },
+                    (() => { ProLog.LogDebug($"加载失败"); }));
             }
         }
     }
