@@ -15,7 +15,7 @@ namespace ProFramework
     public class ProEditorResourceManager : ProSingletonInSystem<ProEditorResourceManager>, IProLoadResourceManager
     {
         //用于放置需要打包进AB包中的资源路径 
-        private string editorAssetBundle => ProConst.EditorAssetBundlePath;
+        private string EditorAssetBundlePath => ProConst.EditorAssetBundlePath;
 
         private ProEditorResourceManager()
         {
@@ -38,7 +38,7 @@ namespace ProFramework
             else if (typeof(T) == typeof(SpriteAtlas))
                 suffixName = ".spriteatlas";
 
-            string path = $"{editorAssetBundle}{assetBundleName}/{resourceName}{suffixName}";
+            string path = $"{EditorAssetBundlePath}{assetBundleName}/{resourceName}{suffixName}";
 
             LoadEditorResource<T>(path, callBack);
         #else
@@ -47,8 +47,8 @@ namespace ProFramework
         #endif
         }
 
-        //1.加载单个资源的
-        public T LoadEditorResource<T>(string path, UnityAction<T> callBack = null) where T : Object
+        //1.加载单个资源的 要自己拼接完整路径并传入后缀名 例如$"{ProConst.EditorAssetBundlePath}{ProConst.Materials}/BlueMaterialTest.mat"
+        public void LoadEditorResource<T>(string path, UnityAction<T> callBack = null) where T : Object
         {
         #if UNITY_EDITOR
             T res = AssetDatabase.LoadAssetAtPath<T>(path);
@@ -59,13 +59,12 @@ namespace ProFramework
             }
 
 
-            callBack(res);
+            if (callBack != null) callBack(res);
 
 
-            return res;
         #else
                 ProLog.LogError("非编辑器模式下不能用编辑器管理器加载资源！返回空！");
-                return null;
+
         #endif
         }
 
@@ -75,7 +74,7 @@ namespace ProFramework
         #if UNITY_EDITOR
             // 应当加载整个Sprite Atlas，而非所有子资源
             SpriteAtlas spriteAtlas =
-                AssetDatabase.LoadAssetAtPath<SpriteAtlas>(editorAssetBundle + atlasPath + ".spriteatlas");
+                AssetDatabase.LoadAssetAtPath<SpriteAtlas>(EditorAssetBundlePath + atlasPath + ".spriteatlas");
 
             if (spriteAtlas == null)
             {
@@ -100,7 +99,6 @@ namespace ProFramework
 
 
         //加载图集文件中的所有子图片并返回给外部
-//加载图集文件中的所有子图片并返回给外部
         public Dictionary<string, Sprite> LoadSpritesDictionaryInAtlas(string atlasPath)
         {
         #if UNITY_EDITOR
@@ -108,7 +106,7 @@ namespace ProFramework
 
             // 加载Sprite Atlas
             SpriteAtlas spriteAtlas =
-                AssetDatabase.LoadAssetAtPath<SpriteAtlas>(editorAssetBundle + atlasPath + ".spriteatlas");
+                AssetDatabase.LoadAssetAtPath<SpriteAtlas>(EditorAssetBundlePath + atlasPath + ".spriteatlas");
 
             if (spriteAtlas == null)
             {

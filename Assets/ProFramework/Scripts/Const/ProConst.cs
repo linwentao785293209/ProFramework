@@ -22,7 +22,7 @@
 
         
         public static readonly string EditorPath = $"Assets/Editor";
-        public static readonly string EditorAssetBundlePath = $"{EditorPath}/{ProFramework}/{AssetBundle}/";
+        public static readonly string EditorAssetBundlePath = $"{EditorPath}/{AssetBundle}/";
 
         public const string AssetBundle = "AssetBundle";
 
