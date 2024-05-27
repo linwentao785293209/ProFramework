@@ -15,9 +15,6 @@ namespace ProFramework
     /// </summary>
     public class ProBinaryDataManager : ProAbstractDataManage<ProBinaryDataManager>
     {
-
-
-
         private string streamingAssetsPath => $"{Application.streamingAssetsPath}/{ProConst.BinaryDataPath}";
 
         private string persistentDataPath => $"{Application.persistentDataPath}/{ProConst.BinaryDataPath}";
@@ -63,12 +60,21 @@ namespace ProFramework
         /// <returns></returns>
         public override T Load<T>(string key) where T : class
         {
-            //如果不存在这个文件 就直接返回泛型对象的默认值
-            if (!File.Exists(persistentDataPath + key + ".tao"))
-                return default(T);
+            string path = persistentDataPath + key + ".tao";
+
+            if (!File.Exists(path))
+            {
+                path = streamingAssetsPath + key + ".tao";
+
+                if (!File.Exists(path))
+                {
+                    ProLog.LogWarning($"文件{key}未找到,返回默认实例！");
+                    return new T();
+                }
+            }
 
             T value;
-            using (FileStream fileStream = File.Open(persistentDataPath + key + ".tao", FileMode.Open, FileAccess.Read))
+            using (FileStream fileStream = File.Open(path, FileMode.Open, FileAccess.Read))
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 value = binaryFormatter.Deserialize(fileStream) as T;
@@ -86,14 +92,22 @@ namespace ProFramework
         /// <returns></returns>
         public override object Load(string key, Type type)
         {
-            // 如果不存在这个文件就直接返回null
-            if (!File.Exists(persistentDataPath + key + ".tao"))
+            string path = persistentDataPath + key + ".tao";
+
+            if (!File.Exists(path))
             {
-                return Activator.CreateInstance(type);
+                path = streamingAssetsPath + key + ".tao";
+
+                if (!File.Exists(path))
+                {
+                    ProLog.LogWarning($"文件{key}未找到,返回默认实例！");
+                    return Activator.CreateInstance(type);
+                }
             }
 
+
             object value;
-            using (FileStream fileStream = File.Open(persistentDataPath + key + ".tao", FileMode.Open, FileAccess.Read))
+            using (FileStream fileStream = File.Open(path, FileMode.Open, FileAccess.Read))
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 value = binaryFormatter.Deserialize(fileStream);
@@ -109,8 +123,5 @@ namespace ProFramework
             // 如果类型不匹配，返回null
             return Activator.CreateInstance(type);
         }
-
-
-
     }
 }

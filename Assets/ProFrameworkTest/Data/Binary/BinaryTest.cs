@@ -17,6 +17,8 @@ namespace ProFrameworkTest
                 binaryTestClass1.intValue = 666;
                 binaryTestClass1.intStringDict.Add("6666666", "6666666");
 
+                binaryTestClass1.stringValue = "i am shuaige!";
+                
                 //  π”√ ProBinaryDataManager ¥Ê¥¢
                 ProBinaryDataManager.Instance.Save("myBinaryTestClass", binaryTestClass1);
             }
