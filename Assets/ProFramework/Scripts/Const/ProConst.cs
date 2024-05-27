@@ -12,6 +12,7 @@
         public const string Animations = "animations";
         public const string Animators = "animators";
         public const string Audios = "audios";
+        public const string Configs = "configs";
         public const string Effects = "effects";
         public const string Fonts = "fonts";
         public const string Materials = "materials";
@@ -47,23 +48,15 @@
         public const string Data = "Data";
 
         public const string Xml = "Xml";
-
-        public static readonly string XmlDataPath =
-            $"{ProFramework}/{Data}/{Xml}/";
-
+        public static readonly string XmlDataPath = $"{Data}/{Xml}/";
 
         public const string Json = "Json";
-
-        public static readonly string JsonDataPath =
-            $"{ProFramework}/{Data}/{Json}/";
-
+        public static readonly string JsonDataPath = $"{Data}/{Json}/";
 
         public const string Binary = "Binary";
+        public static readonly string BinaryDataPath = $"/{Data}/{Binary}/";
 
-        public static readonly string BinaryDataPath =
-            $"{ProFramework}/{Data}/{Binary}/";
 
-        public const string Configs = "Configs";
         public const string Excel = "Excel";
         public const string File = "File";
         public const string Container = "Container";
