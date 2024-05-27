@@ -14,13 +14,15 @@ namespace ProFrameworkTest
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 ProSoundEffectManager.Instance.Play("SoundEffectsTest", false, false,
-                    (source) => { Debug.Log("Sound effect is playing"); });
+                    (source) => { ProLog.LogDebug("Sound effect is playing"); });
             }
     
-            // 按下 W 键，测试停止播放音效
+            // 按下 W 键，测试改变音效大小
             if (Input.GetKeyDown(KeyCode.W))
             {
-                ProSoundEffectManager.Instance.SetVolume(Random.Range(-0.5f,0.5f));
+                var changeVal = Random.Range(-0.5f, 0.5f);
+                ProLog.LogDebug($"改变多少音量{changeVal}");
+                ProSoundEffectManager.Instance.ChangeVolume(changeVal);
             }
     
             // 按下 E 键，测试改变音效大小

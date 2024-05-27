@@ -43,6 +43,8 @@ namespace ProFramework
             // 尝试使用当前加载类型加载资源
             LoadResource<T>(assetBundleName, resourceName, loadTypeNode.Value, result =>
             {
+                ProLog.LogDebug($"尝试使用{loadTypeNode.Value}管理器加载{assetBundleName}AB包下的{resourceName}资源！");
+                
                 if (result == null)
                 {
                     // 如果加载失败，尝试使用下一个加载类型加载资源

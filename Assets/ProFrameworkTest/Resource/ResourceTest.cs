@@ -112,7 +112,7 @@ namespace ProFrameworkTest
         // 当资源清空完成后的回调
         void OnResourceCleared()
         {
-            Debug.Log("清空字典，所有未使用资源，一般过场景"); // 输出日志
+            ProLog.LogDebug("清空字典，所有未使用资源，一般过场景"); // 输出日志
         }
     }
 }
