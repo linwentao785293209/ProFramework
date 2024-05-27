@@ -5,10 +5,12 @@
         public const string ProFramework = "ProFramework";
         public const string Version = "0.0.1";
 
-        public const int DefaultMaxNum = 1000; // 默认最大数量
+        // 对象池
+        public const int GameObjectPoolDefaultMaxNum = 1000; // 游戏对象池默认最大数量
 
-
+        // AB包
         public const string Animations = "animations";
+        public const string Animators = "animators";
         public const string Audios = "audios";
         public const string Effects = "effects";
         public const string Fonts = "fonts";
@@ -18,9 +20,7 @@
         public const string Textures = "textures";
         public const string Ui = "ui";
 
-
-        public static readonly string ResourcePath = $"{ProFramework}/";
-
+        
         public static readonly string EditorPath = $"Assets/Editor";
         public static readonly string EditorAssetBundlePath = $"{EditorPath}/{ProFramework}/{AssetBundle}/";
 

@@ -16,46 +16,27 @@ namespace ProFrameworkTest
             // 按下 Q 键，同步加载预制体资源
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                // GameObject capsuleTest =
-                //     ProResourceManager.Instance.Load<GameObject>(
-                //         $"{ProConst.ResourcePath}{ProConst.Models}/" + "CapsuleTest");
-                // if (capsuleTest != null)
-                // {
-                //     GameObject obj = Instantiate(capsuleTest); // 实例化加载的预制体
-                //     capsuleTestList.Add(obj); // 添加到列表中
-                // }
-                
-                ProResourceManager.Instance.LoadResource<GameObject>(ProConst.Models,"CapsuleTest", (capsuleTest) =>
-                {
-                    if (capsuleTest != null)
-                    {
-                        GameObject obj = Instantiate(capsuleTest); // 实例化加载的预制体
-                        capsuleTestList.Add(obj); // 添加到列表中
-                    }
-                },true);
+                ProResourceManager.Instance.LoadResource<GameObject>(ProConst.Models, "CapsuleTest", OnCapsuleTestLoaded, true);
             }
 
             // 按下 W 键，异步加载预制体资源
             if (Input.GetKeyDown(KeyCode.W))
             {
-                // ProResourceManager.Instance.LoadAsync<GameObject>(
-                //     $"{ProConst.ResourcePath}{ProConst.Models}/" + "CapsuleTest", OnCapsuleTestLoaded);
-                
-                ProResourceManager.Instance.LoadResource<GameObject>(ProConst.Models,"CapsuleTest", (capsuleTest) =>
+                ProResourceManager.Instance.LoadResource<GameObject>(ProConst.Models, "CapsuleTest", (capsuleTest) =>
                 {
                     if (capsuleTest != null)
                     {
                         GameObject obj = Instantiate(capsuleTest); // 实例化加载的预制体
                         capsuleTestList.Add(obj); // 添加到列表中
                     }
-                },false);
+                }, false);
             }
 
             // 按下 E 键，卸载预制体资源
             if (Input.GetKeyDown(KeyCode.E))
             {
                 ProResourceManager.Instance.UnloadAsset<GameObject>(
-                    $"{ProConst.ResourcePath}{ProConst.Models}/" + "CapsuleTest", true);
+                    $"{ProConst.Models}/" + "CapsuleTest", true);
             }
 
             // 按下 R 键，销毁场景中所有已加载的预制体
@@ -73,7 +54,7 @@ namespace ProFrameworkTest
             if (Input.GetKeyDown(KeyCode.A))
             {
                 ProResourceManager.Instance.LoadAsync<Texture>(
-                    $"{ProConst.ResourcePath}{ProConst.Textures}/" + "head", (headImg) =>
+                    $"{ProConst.Textures}/" + "head", (headImg) =>
                     {
                         if (headImg != null)
                         {
@@ -86,7 +67,7 @@ namespace ProFrameworkTest
             if (Input.GetKeyDown(KeyCode.S))
             {
                 ProResourceManager.Instance.UnloadAsset<Texture>(
-                    $"{ProConst.ResourcePath}{ProConst.Textures}/" + "head", true); // 卸载资源
+                    $"{ProConst.Textures}/" + "head", true); // 卸载资源
                 rawImage.texture = null; // 将 RawImage 的 texture 设置为 null
             }
 
@@ -94,7 +75,7 @@ namespace ProFrameworkTest
             if (Input.GetKeyDown(KeyCode.D))
             {
                 ProResourceManager.Instance.LoadAsync<Texture>(
-                    $"{ProConst.ResourcePath}{ProConst.Textures}/" + "folder", (folderImg) =>
+                    $"{ProConst.Textures}/" + "folder", (folderImg) =>
                     {
                         if (folderImg != null)
                         {
@@ -107,7 +88,7 @@ namespace ProFrameworkTest
             if (Input.GetKeyDown(KeyCode.F))
             {
                 ProResourceManager.Instance.UnloadAsset<Texture>(
-                    $"{ProConst.ResourcePath}{ProConst.Textures}/" + "folder", true); // 卸载资源
+                    $"{ProConst.Textures}/" + "folder", true); // 卸载资源
                 rawImage.texture = null; // 将 RawImage 的 texture 设置为 null
             }
 
@@ -131,7 +112,7 @@ namespace ProFrameworkTest
         // 当资源清空完成后的回调
         void OnResourceCleared()
         {
-            Debug.Log("情况字典，所有未使用资源，一般过场景"); // 输出日志
+            Debug.Log("清空字典，所有未使用资源，一般过场景"); // 输出日志
         }
     }
 }

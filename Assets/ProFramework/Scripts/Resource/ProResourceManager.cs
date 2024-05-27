@@ -24,11 +24,11 @@ namespace ProFramework
         public void LoadResource<T>(string assetBundleName, string resourceName, UnityAction<T> callBack = null,
             bool isSync = false) where T : UnityEngine.Object
         {
-            string path = $"{ProConst.ResourcePath}{assetBundleName}/{resourceName}";
+            string path = $"{assetBundleName}/{resourceName}";
 
             if (isSync)
             {
-                Load(path, callBack);
+                LoadSync(path, callBack);
             }
             else
             {
@@ -42,7 +42,7 @@ namespace ProFramework
         /// <typeparam name="T"></typeparam>
         /// <param name="path"></param>
         /// <returns></returns>
-        public T Load<T>(string path, UnityAction<T> callBack = null) where T : UnityEngine.Object
+        public T LoadSync<T>(string path, UnityAction<T> callBack = null) where T : UnityEngine.Object
         {
             string resourceName = path + "_" + typeof(T).Name;
 
@@ -181,8 +181,7 @@ namespace ProFramework
         /// 指定卸载一个资源
         /// </summary>
         /// <param name="assetToUnload"></param>
-        public void UnloadAsset<T>(string path, bool isDel = false, UnityAction<T> callBack = null, bool isSub = true)
-            where T : UnityEngine.Object
+        public void UnloadAsset<T>(string path, bool isDel = false, UnityAction<T> callBack = null, bool isSub = true) where T : UnityEngine.Object
         {
             string resourceName = path + "_" + typeof(T).Name;
             //判断是否存在对应资源

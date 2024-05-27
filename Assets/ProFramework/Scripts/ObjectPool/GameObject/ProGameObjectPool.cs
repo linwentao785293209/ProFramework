@@ -68,7 +68,7 @@ namespace ProFramework
                 if (gameObjectPoolScriptableObject == null)
                 {
                     // 如果未设置预制体的ScriptableObject，则使用默认值
-                    _maxNum = ProConst.DefaultMaxNum;
+                    _maxNum = ProConst.GameObjectPoolDefaultMaxNum;
                     ProLog.LogWarning("未设置预制体的ScriptableObject，使用默认最大值");
                 }
                 else
