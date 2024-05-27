@@ -12,7 +12,6 @@
         public const string Animations = "animations";
         public const string Animators = "animators";
         public const string Audios = "audios";
-        public const string Configs = "configs";
         public const string Effects = "effects";
         public const string Fonts = "fonts";
         public const string Materials = "materials";
@@ -46,6 +45,7 @@
 
 
         public const string Data = "Data";
+        public const string Configs = "Configs";
 
         public const string Xml = "Xml";
         public static readonly string XmlDataPath = $"{Data}/{Xml}/";
@@ -55,16 +55,12 @@
 
         public const string Binary = "Binary";
         public static readonly string BinaryDataPath = $"/{Data}/{Binary}/";
+        public static readonly string BinaryConfigsPath = $"/{Configs}/{Binary}/";
 
 
         public const string Excel = "Excel";
         public const string File = "File";
         public const string Container = "Container";
         public const string DataClass = "DataClass";
-
-        public static readonly string ExcelPath = $"{ProFramework}/{Configs}/{Excel}/";
-        public static readonly string ExcelFilePath = $"{ExcelPath}{File}/";
-        public static readonly string ExcelContainerPath = $"{ExcelPath}{Container}/";
-        public static readonly string ExcelDataClassPath = $"{ExcelPath}{DataClass}/";
     }
 }
