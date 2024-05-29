@@ -1,4 +1,5 @@
 ﻿using ProFramework;
+using UnityEngine;
 
 namespace ProFrameworkTest
 {
@@ -23,6 +24,25 @@ namespace ProFrameworkTest
         {
             // 实现进入 Idle 状态时的操作
             (stateManager as FsmTestStateManager)?.FsmTest.Idle();
+        }
+
+        public override void CheckTransition()
+        {
+            // 测试状态转换
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                stateManager.ChangeState(EFsmTestTransition.StartWalking);
+            }
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                stateManager.ChangeState(EFsmTestTransition.StartRunning);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                stateManager.ChangeState(EFsmTestTransition.Stop);
+            }
         }
     }
 }

@@ -18,22 +18,6 @@ namespace ProFrameworkTest
         {
             // 更新状态机
             _stateManager.Update();
-
-            // 测试状态转换
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                _stateManager.ChangeState(EFsmTestTransition.StartWalking);
-            }
-
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                _stateManager.ChangeState(EFsmTestTransition.StartRunning);
-            }
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                _stateManager.ChangeState(EFsmTestTransition.Stop);
-            }
         }
 
         public void Idle()

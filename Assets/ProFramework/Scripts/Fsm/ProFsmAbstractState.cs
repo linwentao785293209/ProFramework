@@ -73,5 +73,6 @@ namespace ProFramework
 
         // 更新状态时的操作
         public abstract void OnUpdate();
+        public abstract void CheckTransition();
     }
 }

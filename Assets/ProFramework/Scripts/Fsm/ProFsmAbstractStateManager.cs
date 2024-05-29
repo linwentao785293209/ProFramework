@@ -47,6 +47,7 @@ namespace ProFramework
         public virtual void Update()
         {
             currentState.OnUpdate(); // 执行当前状态的更新操作
+            currentState.CheckTransition();
         }
 
         // 添加状态
