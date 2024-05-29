@@ -9,10 +9,8 @@ namespace ProFrameworkTest
         public FsmTestStateManager(FsmTest fsmTest) : base()
         {
             FsmTest = fsmTest;
-        }
 
-        protected override void Init()
-        {
+
             // 初始化所有状态
             var idleState = new IdleState(this);
             var walkingState = new WalkingState(this);
@@ -26,10 +24,10 @@ namespace ProFrameworkTest
             // 设置状态转换
             idleState.AddTransition(EFsmTestTransition.StartWalking, EFsmState.Walking);
             idleState.AddTransition(EFsmTestTransition.StartRunning, EFsmState.Running);
-            
+
             walkingState.AddTransition(EFsmTestTransition.Stop, EFsmState.Idle);
             walkingState.AddTransition(EFsmTestTransition.StartRunning, EFsmState.Running);
-             
+
             runningState.AddTransition(EFsmTestTransition.Stop, EFsmState.Idle);
         }
     }

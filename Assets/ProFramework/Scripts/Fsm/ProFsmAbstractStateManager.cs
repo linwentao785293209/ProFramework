@@ -15,14 +15,6 @@ namespace ProFramework
 
         public ProFsmAbstractState<TStateEnum, TTransitionEnum> CurrentState => currentState; // 获取当前状态
 
-        // 构造函数，初始化状态机
-        protected ProFsmAbstractStateManager()
-        {
-            Init();
-        }
-
-        // 子类实现此方法以初始化状态
-        protected abstract void Init();
 
         // 启动状态机
         public void Start(TStateEnum state)
