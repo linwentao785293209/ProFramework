@@ -58,6 +58,7 @@ namespace ProFramework
                     _excelPath = selectedPath;
                 }
             }
+
             EditorGUILayout.Space(15);
 
             _excelDataClassPath = EditorGUILayout.TextField("数据类路径", _excelDataClassPath);
@@ -69,6 +70,7 @@ namespace ProFramework
                     _excelDataClassPath = selectedPath;
                 }
             }
+
             EditorGUILayout.Space(15);
 
             _excelDataContainerPath = EditorGUILayout.TextField("容器类路径", _excelDataContainerPath);
@@ -80,6 +82,7 @@ namespace ProFramework
                     _excelDataContainerPath = selectedPath;
                 }
             }
+
             EditorGUILayout.Space(15);
 
             if (GUILayout.Button("生成Excel数据结构类和容器类"))

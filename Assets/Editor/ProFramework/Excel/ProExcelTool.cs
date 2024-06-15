@@ -116,7 +116,7 @@ namespace ProFramework
 
             str += "    ";
             str += "public Dictionary<" + rowType[keyIndex].ToString() + ", " + dataTable.TableName + ">";
-            str += "dataClassDictionary = new " + "Dictionary<" + rowType[keyIndex].ToString() + ", " +
+            str += " dataClassDictionary = new " + "Dictionary<" + rowType[keyIndex].ToString() + ", " +
                    dataTable.TableName +
                    ">();\n";
 
