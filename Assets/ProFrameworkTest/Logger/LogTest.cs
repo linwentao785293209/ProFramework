@@ -9,24 +9,21 @@ namespace ProFrameworkTest
         {
             if (Input.anyKeyDown)
             {
-
-
-
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
-                    ProLog.LogDebug($"{CreateRandomStr()}",$"{CreateRandomStr()}",$"{CreateRandomStr()}");
+                    ProLog.LogDebug($"{CreateRandomStr()}", $"{CreateRandomStr()}", $"{CreateRandomStr()}");
                 }
                 else if (Input.GetKeyDown(KeyCode.W))
                 {
-                    ProLog.LogInfo($"{CreateRandomStr()}",$"{CreateRandomStr()}",$"{CreateRandomStr()}");
+                    ProLog.LogInfo($"{CreateRandomStr()}", $"{CreateRandomStr()}", $"{CreateRandomStr()}");
                 }
                 else if (Input.GetKeyDown(KeyCode.E))
                 {
-                    ProLog.LogWarning($"{CreateRandomStr()}",$"{CreateRandomStr()}",$"{CreateRandomStr()}");
+                    ProLog.LogWarning($"{CreateRandomStr()}", $"{CreateRandomStr()}", $"{CreateRandomStr()}");
                 }
                 else if (Input.GetKeyDown(KeyCode.R))
                 {
-                    ProLog.LogError($"{CreateRandomStr()}",$"{CreateRandomStr()}",$"{CreateRandomStr()}");
+                    ProLog.LogError($"{CreateRandomStr()}", $"{CreateRandomStr()}", $"{CreateRandomStr()}");
                 }
             }
         }
