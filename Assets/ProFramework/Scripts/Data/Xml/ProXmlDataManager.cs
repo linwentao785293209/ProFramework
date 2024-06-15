@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace ProFramework
 {
-    public class ProXmlDataManager : ProAbstractDataManage<ProXmlDataManager>
+    public class ProXmlDataManager : ProAbstractDataManager<ProXmlDataManager>
     {
         private ProXmlDataManager()
         {

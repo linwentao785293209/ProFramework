@@ -9,7 +9,7 @@ namespace ProFramework
     /// <summary>
     /// PlayerPrefs数据管理器，用于将数据保存到PlayerPrefs中并从中加载数据
     /// </summary>
-    public class ProPlayerPrefsDataManager : ProAbstractDataManage<ProPlayerPrefsDataManager>
+    public class ProPlayerPrefsDataManager : ProAbstractDataManager<ProPlayerPrefsDataManager>
     {
         /// <summary>
         /// 私有构造函数

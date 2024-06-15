@@ -13,7 +13,7 @@ namespace ProFramework
     /// <summary>
     /// 2进制数据管理器
     /// </summary>
-    public class ProBinaryDataManager : ProAbstractDataManage<ProBinaryDataManager>
+    public class ProBinaryDataManager : ProAbstractDataManager<ProBinaryDataManager>
     {
         private string streamingAssetsPath => $"{Application.streamingAssetsPath}/{ProConst.BinaryDataPath}";
 

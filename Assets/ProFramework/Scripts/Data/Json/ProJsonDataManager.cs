@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace ProFramework
 {
-    public class ProJsonDataManager : ProAbstractDataManage<ProJsonDataManager>
+    public class ProJsonDataManager : ProAbstractDataManager<ProJsonDataManager>
     {
         private ProJsonDataManager()
         {

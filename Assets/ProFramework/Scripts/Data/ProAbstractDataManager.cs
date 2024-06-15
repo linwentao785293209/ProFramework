@@ -2,7 +2,7 @@
 
 namespace ProFramework
 {
-    public abstract class ProAbstractDataManage<T> : ProSingletonInSystem<T>, IProDataManager where T : class
+    public abstract class ProAbstractDataManager<T> : ProSingletonInSystem<T>, IProDataManager where T : class
     {
         public abstract void Save<T1>(string key, T1 value);
 
