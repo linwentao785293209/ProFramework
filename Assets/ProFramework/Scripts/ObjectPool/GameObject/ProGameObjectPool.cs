@@ -21,7 +21,7 @@ namespace ProFramework
         /// <summary>
         /// 最大对象数量
         /// </summary>
-        private int _maxNum;
+        private int _maxNum = ProConst.GameObjectPoolDefaultMaxNum;
 
         /// <summary>
         /// 游戏对象池节点
