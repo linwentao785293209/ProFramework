@@ -98,7 +98,7 @@ namespace ProFramework
         /// <param name="layer">面板显示的层级</param>
         /// <param name="callBack">由于可能是异步加载 因此通过委托回调的形式 将加载完成的面板传递出去进行使用</param>
         /// <param name="isSync">是否采用同步加载 默认为false</param>
-        public void ShowPanel<T>(EProUGUILayer layer = EProUGUILayer.Bottom, UnityAction<T> callBack = null,
+        public void ShowPanel<T>(EProUGUILayer layer = EProUGUILayer.Bottom,string assetBundleName = ProConst.Ui, UnityAction<T> callBack = null,
             bool isSync = false) where T : ProUGUIPanel
         {
             //获取面板名 预设体名必须和面板类名一致 
@@ -140,7 +140,7 @@ namespace ProFramework
             _panelInfoDictionary.Add(panelName, new ProUGUIPanelInfo<T>(callBack));
 
             //不存在面板 加载面板
-            ProAssetManager.Instance.LoadResource<GameObject>(ProConst.Ui, panelName, (res) =>
+            ProAssetManager.Instance.LoadResource<GameObject>(assetBundleName, panelName, (res) =>
             {
                 //取出字典中已经占好位置的数据
                 ProUGUIPanelInfo<T> panelInfo = _panelInfoDictionary[panelName] as ProUGUIPanelInfo<T>;
