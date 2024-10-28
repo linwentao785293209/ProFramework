@@ -6,7 +6,7 @@ namespace ProFramework
     /// <summary>
     /// MonoBehaviourπ‹¿Ì∆˜
     /// </summary>
-    public class ProMonoBehaviourManager : ProUnityAutoSingleton<ProMonoBehaviourManager>
+    public sealed class ProMonoBehaviourManager : ProUnityAutoSingleton<ProMonoBehaviourManager>
     {
         private event UnityAction UpdateEvent;
         private event UnityAction FixedUpdateEvent;

@@ -7,31 +7,105 @@ namespace ProFrameworkTest
     {
         private void Start()
         {
-            ProMonoBehaviourManager.Instance.AddUpdateListener(OnUpdate);
-            ProMonoBehaviourManager.Instance.AddFixedUpdateListener(OnFixedUpdate);
-            ProMonoBehaviourManager.Instance.AddLateUpdateListener(OnLateUpdate);
+            ProMonoBehaviourManager.Instance.AddUpdateListener(OnCheckInput);
         }
 
         private void OnDestroy()
         {
-            ProMonoBehaviourManager.Instance.RemoveUpdateListener(OnUpdate);
-            ProMonoBehaviourManager.Instance.RemoveFixedUpdateListener(OnFixedUpdate);
-            ProMonoBehaviourManager.Instance.RemoveLateUpdateListener(OnLateUpdate);
+            ProMonoBehaviourManager.Instance?.RemoveUpdateListener(OnCheckInput);
         }
 
-        private void OnUpdate()
+        private void OnCheckInput()
         {
-            ProLog.LogDebug("每帧更新");
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                ProMonoBehaviourManager.Instance.AddUpdateListener(OnUpdate1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                ProMonoBehaviourManager.Instance.AddFixedUpdateListener(OnFixedUpdate1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ProMonoBehaviourManager.Instance.AddLateUpdateListener(OnLateUpdate1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                ProMonoBehaviourManager.Instance.AddUpdateListener(OnUpdate2);
+            }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                ProMonoBehaviourManager.Instance.AddFixedUpdateListener(OnFixedUpdate2);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Y))
+            {
+                ProMonoBehaviourManager.Instance.AddLateUpdateListener(OnLateUpdate2);
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                ProMonoBehaviourManager.Instance?.RemoveUpdateListener(OnUpdate1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                ProMonoBehaviourManager.Instance?.RemoveFixedUpdateListener(OnFixedUpdate1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                ProMonoBehaviourManager.Instance?.RemoveLateUpdateListener(OnLateUpdate1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                ProMonoBehaviourManager.Instance?.RemoveUpdateListener(OnUpdate2);
+            }
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                ProMonoBehaviourManager.Instance?.RemoveFixedUpdateListener(OnFixedUpdate2);
+            }
+
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                ProMonoBehaviourManager.Instance?.RemoveLateUpdateListener(OnLateUpdate2);
+            }
         }
 
-        private void OnFixedUpdate()
+        private void OnUpdate1()
         {
-            ProLog.LogDebug("固定帧更新");
+            ProLog.LogDebug("每帧更新1");
         }
 
-        private void OnLateUpdate()
+        private void OnFixedUpdate1()
         {
-            ProLog.LogDebug("晚期更新");
+            ProLog.LogDebug("固定帧更新1");
+        }
+
+        private void OnLateUpdate1()
+        {
+            ProLog.LogDebug("晚期更新1");
+        }
+
+        private void OnUpdate2()
+        {
+            ProLog.LogDebug("每帧更新2");
+        }
+
+        private void OnFixedUpdate2()
+        {
+            ProLog.LogDebug("固定帧更新2");
+        }
+
+        private void OnLateUpdate2()
+        {
+            ProLog.LogDebug("晚期更新2");
         }
     }
 }
