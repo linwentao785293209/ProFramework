@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ProFrameworkTest
 {
     [DisallowMultipleComponent]
-    public class TestProUnityManualSingleton : ProUnityManualSingleton<TestProUnityManualSingleton>
+    public sealed class TestProUnityManualSingleton : ProUnityManualSingleton<TestProUnityManualSingleton>
     {
         private string _name;
 

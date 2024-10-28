@@ -10,13 +10,19 @@ namespace ProFramework
     public class ProUnityAutoSingleton<T> : MonoBehaviour where T : ProUnityAutoSingleton<T>
     {
         private static readonly object _lockObject = new object();
-
         private static T _instance;
+        private static bool _isApplicationQuitting = false;
 
         public static T Instance
         {
             get
             {
+                if (_isApplicationQuitting)
+                {
+                    Debug.LogWarning($"{typeof(T).Name} 单例已在退出期间被销毁，无法获取实例。");
+                    return null;
+                }
+
                 if (_instance == null)
                 {
                     lock (_lockObject)
@@ -64,6 +70,11 @@ namespace ProFramework
             {
                 _instance = null;
             }
+        }
+        
+        protected void OnApplicationQuit()
+        {
+            _isApplicationQuitting = true;
         }
     }
 }

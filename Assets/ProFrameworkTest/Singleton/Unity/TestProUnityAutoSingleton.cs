@@ -2,7 +2,7 @@
 
 namespace ProFrameworkTest
 {
-    public class TestProUnityAutoSingleton : ProUnityAutoSingleton<TestProUnityAutoSingleton>
+    public sealed class TestProUnityAutoSingleton : ProUnityAutoSingleton<TestProUnityAutoSingleton>
     {
         private string _name;
 
