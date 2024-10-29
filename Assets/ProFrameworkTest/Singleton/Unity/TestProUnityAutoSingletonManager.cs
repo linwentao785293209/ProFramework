@@ -2,14 +2,14 @@
 
 namespace ProFrameworkTest
 {
-    public sealed class TestProUnityAutoSingleton : ProUnityAutoSingleton<TestProUnityAutoSingleton>
+    public sealed class TestProUnityAutoSingletonManager : ProUnityAutoSingleton<TestProUnityAutoSingletonManager>
     {
         private string _name;
 
         protected override void Awake()
         {
             base.Awake();
-            _name = nameof(TestProCSharpSingleton);
+            _name = nameof(TestProCSharpSingletonManager);
         }
 
         public void TestMethod()

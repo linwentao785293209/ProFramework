@@ -4,14 +4,14 @@ using UnityEngine;
 namespace ProFrameworkTest
 {
     [DisallowMultipleComponent]
-    public sealed class TestProUnityManualSingleton : ProUnityManualSingleton<TestProUnityManualSingleton>
+    public sealed class TestProUnityManualSingletonManager : ProUnityManualSingleton<TestProUnityManualSingletonManager>
     {
         private string _name;
 
         protected override void Awake()
         {
             base.Awake();
-            _name = nameof(TestProCSharpSingleton);
+            _name = nameof(TestProCSharpSingletonManager);
         }
 
         public void TestMethod()
