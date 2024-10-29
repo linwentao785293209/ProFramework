@@ -11,7 +11,7 @@ namespace ProFramework
 
         void Save(string key, object value);
 
-        TData Load<TData>(string key) where TData : class, new();
+        TData Load<TData>(string key);
 
         object Load(string key, Type type);
     }
