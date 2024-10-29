@@ -6,7 +6,7 @@ namespace ProFramework
     /// 数据管理器基类
     /// </summary>
     /// <typeparam name="T">数据管理器类型</typeparam>
-    public abstract class ProAbstractDataManager<T> : ProCSharpSingleton<T>, IProDataManager, IProDataHandler
+    public abstract class ProAbstractDataManager<T> : ProCSharpSingleton<T>, IProDataManager
         where T : ProAbstractDataManager<T>
     {
         public void Save<TData>(string key, TData value)
@@ -36,12 +36,12 @@ namespace ProFramework
             return OnLoad(key, type);
         }
 
-        public abstract void OnSave<TData>(string key, TData value);
+        protected abstract void OnSave<TData>(string key, TData value);
 
-        public abstract void OnSave(string key, object value);
+        protected abstract void OnSave(string key, object value);
 
-        public abstract TData OnLoad<TData>(string key);
+        protected abstract TData OnLoad<TData>(string key);
 
-        public abstract object OnLoad(string key, Type type);
+        protected abstract object OnLoad(string key, Type type);
     }
 }
