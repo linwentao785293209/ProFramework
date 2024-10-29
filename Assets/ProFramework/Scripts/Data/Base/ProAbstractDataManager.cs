@@ -36,6 +36,17 @@ namespace ProFramework
             return OnLoad(key, type);
         }
 
+        public bool Delete(string key)
+        {
+            ProDataValidator.ValidateKey(key);
+            return OnDelete(key);
+        }
+
+        public void Clear()
+        {
+            OnClear();
+        }
+
         protected abstract void OnSave<TData>(string key, TData value);
 
         protected abstract void OnSave(string key, object value);
@@ -43,5 +54,9 @@ namespace ProFramework
         protected abstract TData OnLoad<TData>(string key);
 
         protected abstract object OnLoad(string key, Type type);
+
+        protected abstract bool OnDelete(string key);
+
+        protected abstract void OnClear();
     }
 }

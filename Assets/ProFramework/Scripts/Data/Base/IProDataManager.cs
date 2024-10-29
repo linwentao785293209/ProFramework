@@ -14,5 +14,9 @@ namespace ProFramework
         TData Load<TData>(string key);
 
         object Load(string key, Type type);
+
+        public bool Delete(string key);
+
+        public void Clear();
     }
 }
