@@ -3,13 +3,13 @@ using ProFramework;
 
 namespace ProFrameworkTest
 {
-    public class TestProCSharpSingleton : ProCSharpSingleton<TestProCSharpSingleton>
+    public sealed class TestProCSharpSingletonManager : ProCSharpSingleton<TestProCSharpSingletonManager>
     {
         private string _name;
-        
-        private TestProCSharpSingleton()
+
+        private TestProCSharpSingletonManager()
         {
-            _name = nameof(TestProCSharpSingleton);
+            _name = nameof(TestProCSharpSingletonManager);
         }
 
         public void TestMethod()

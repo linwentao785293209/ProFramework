@@ -2,13 +2,13 @@
 
 namespace ProFrameworkTest
 {
-    public abstract class TestAbstractProCSharpSingleton : ProCSharpSingleton<TestAbstractProCSharpSingleton>
+    public abstract class TestAbstractProCSharpSingletonManager : ProCSharpSingleton<TestAbstractProCSharpSingletonManager>
     {
         private string _name;
 
-        private TestAbstractProCSharpSingleton()
+        private TestAbstractProCSharpSingletonManager()
         {
-            _name = nameof(TestAbstractProCSharpSingleton);
+            _name = nameof(TestAbstractProCSharpSingletonManager);
         }
 
         public void TestMethod()
