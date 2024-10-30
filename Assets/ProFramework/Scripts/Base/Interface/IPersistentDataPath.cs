@@ -1,6 +1,6 @@
 ﻿namespace ProFramework
 {
-    public interface IPersistentDataPath
+    internal interface IPersistentDataPath
     {
         string PersistentDataPath { get; }
     }

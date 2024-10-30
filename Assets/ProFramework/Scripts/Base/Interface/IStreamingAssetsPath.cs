@@ -1,6 +1,6 @@
 ﻿namespace ProFramework
 {
-    public interface IStreamingAssetsPath
+    internal interface IStreamingAssetsPath
     {
         string StreamingAssetsPath { get; }
     }
