@@ -9,10 +9,13 @@ namespace ProFramework
     /// </summary>
     public sealed class ProPlayerPrefsDataManager : ProAbstractDataManager<ProPlayerPrefsDataManager>
     {
+        protected override string DataString => ProConst.PlayerPrefs;
+        protected override EProDataType DataType => EProDataType.PlayerPrefs;
+
         private ProPlayerPrefsDataManager()
         {
         }
-
+        
         protected override void OnSave<TData>(string key, TData value)
         {
             var jsonData = JsonConvert.SerializeObject(value);
