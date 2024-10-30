@@ -15,41 +15,43 @@ namespace ProFramework
         private ProPlayerPrefsDataManager()
         {
         }
-        
+
         protected override void OnSave<TData>(string key, TData value)
         {
-            var jsonData = JsonConvert.SerializeObject(value);
-            PlayerPrefs.SetString(key, jsonData);
-            PlayerPrefs.Save();
+            SaveToPlayerPrefs(key, value);
         }
 
         protected override void OnSave(string key, object value)
         {
-            var jsonData = JsonConvert.SerializeObject(value);
-            PlayerPrefs.SetString(key, jsonData);
-            PlayerPrefs.Save();
+            SaveToPlayerPrefs(key, value);
+        }
+
+        private void SaveToPlayerPrefs<TData>(string key, TData value)
+        {
+            Type type = value.GetType();
+            try
+            {
+                var jsonData = JsonConvert.SerializeObject(value);
+                PlayerPrefs.SetString(key, jsonData);
+                PlayerPrefs.Save();
+            }
+            catch (Exception ex)
+            {
+                ProLog.LogError($"存储时错误序列化 key：'{key}' 类型：'{type}' 异常信息：{ex.Message}");
+            }
         }
 
         protected override TData OnLoad<TData>(string key)
         {
-            Type type = typeof(TData);
-            var jsonData = PlayerPrefs.GetString(key, string.Empty);
-            if (!string.IsNullOrEmpty(jsonData))
-            {
-                try
-                {
-                    return JsonConvert.DeserializeObject<TData>(jsonData);
-                }
-                catch (JsonException ex)
-                {
-                    ProLog.LogError($"错误反序列化 key：'{key}' 类型：'{type}' 异常信息：{ex.Message}");
-                }
-            }
-
-            return typeof(TData).IsValueType ? default : Activator.CreateInstance<TData>();
+            return (TData)LoadFromPlayerPrefs(key, typeof(TData));
         }
 
         protected override object OnLoad(string key, Type type)
+        {
+            return LoadFromPlayerPrefs(key, type);
+        }
+
+        private object LoadFromPlayerPrefs(string key, Type type)
         {
             var jsonData = PlayerPrefs.GetString(key, string.Empty);
             if (!string.IsNullOrEmpty(jsonData))
@@ -60,11 +62,12 @@ namespace ProFramework
                 }
                 catch (JsonException ex)
                 {
-                    ProLog.LogError($"错误反序列化 key：'{key}' 类型：'{type}' 异常信息：{ex.Message}");
+                    ProLog.LogError($"读取时错误反序列化 key：'{key}' 类型：'{type}' 异常信息：{ex.Message}");
                 }
             }
 
-            return type.IsValueType ? default : Activator.CreateInstance(type);
+            ProLog.LogWarning($"读取时错误反序列化，返回默认类型");
+            return type.IsValueType ? Activator.CreateInstance(type) : null;
         }
 
         protected override bool OnDelete(string key)
