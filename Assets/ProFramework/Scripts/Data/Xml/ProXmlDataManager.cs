@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.IO;
 using System.Xml.Serialization;
-using UnityEngine;
+
 
 namespace ProFramework
 {
@@ -29,7 +29,7 @@ namespace ProFramework
         protected override void OnSave(string key, object value)
         {
             string path = ProPathUtil.GetFilePath(PersistentDataPath, key, "xml");
-            ProDirectoryUtil.CreateDirectory(Path.GetDirectoryName(path));
+            ProDirectoryUtil.CreateDirectory(ProPathUtil.GetDirectoryName(path));
 
             try
             {
