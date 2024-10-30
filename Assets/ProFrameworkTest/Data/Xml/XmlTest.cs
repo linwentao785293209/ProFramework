@@ -78,7 +78,7 @@ namespace ProFrameworkTest
                     ProLog.LogDebug("testItemDict:");
                     foreach (var item in xmlTestClass2.testItemDict)
                     {
-                        ProLog.LogDebug($"  Key: {item.Key}, Value: {item.Value}");
+                        ProLog.LogDebug($"  Key: {item.Key}, Value: {item.Value} id：{item.Value.id} num：{item.Value.num}");
                     }
                 }
                 else
