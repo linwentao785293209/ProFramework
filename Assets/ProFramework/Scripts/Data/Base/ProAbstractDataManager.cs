@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace ProFramework
 {
@@ -6,9 +7,16 @@ namespace ProFramework
     /// 数据管理器基类
     /// </summary>
     /// <typeparam name="T">数据管理器类型</typeparam>
-    public abstract class ProAbstractDataManager<T> : ProCSharpSingleton<T>, IProDataManager
+    public abstract class ProAbstractDataManager<T>
+        : ProCSharpSingleton<T>, IProDataManager, IStreamingAssetsPath, IPersistentDataPath
         where T : ProAbstractDataManager<T>
     {
+        public string StreamingAssetsPath => $"{Application.streamingAssetsPath}/{ProConst.Data}/{DataString}/";
+        public string PersistentDataPath => $"{Application.persistentDataPath}/{ProConst.Data}/{DataString}/";
+
+        protected abstract string DataString { get; }
+        protected abstract EProDataType DataType { get; }
+
         public void Save<TData>(string key, TData value)
         {
             ProDataValidator.ValidateKey(key);
