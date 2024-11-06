@@ -16,6 +16,7 @@ namespace ProFramework
 
         protected abstract string DataString { get; }
         protected abstract EProDataType DataType { get; }
+        protected abstract string DataExtension { get; }
 
         public void Save<TData>(string key, TData value)
         {

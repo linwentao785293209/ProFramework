@@ -1,24 +1,20 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.IO;
-using System.Xml.Serialization;
-
+using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine;
 
 namespace ProFramework
 {
     /// <summary>
-    /// Xml 数据管理器
+    /// 二进制数据管理器
     /// </summary>
-    public class ProXmlDataManager : ProAbstractDataManager<ProXmlDataManager>
+    public class ProBinaryDataManager : ProAbstractDataManager<ProBinaryDataManager>
     {
-        protected override string DataString => ProConst.Xml;
-        protected override EProDataType DataType => EProDataType.Xml;
-        protected override string DataExtension => "xml";
+        protected override string DataString => ProConst.Binary;
+        protected override EProDataType DataType => EProDataType.Binary;
+        protected override string DataExtension => "tao";
 
-        private readonly ConcurrentDictionary<Type, XmlSerializer> _xmlSerializerCache =
-            new ConcurrentDictionary<Type, XmlSerializer>();
-
-        private ProXmlDataManager()
+        private ProBinaryDataManager()
         {
         }
 
@@ -30,19 +26,19 @@ namespace ProFramework
         protected override void OnSave(string key, object value)
         {
             string path = ProPathUtil.GetFilePath(PersistentDataPath, key, DataExtension);
-            ProDirectoryUtil.CreateDirectory(ProPathUtil.GetDirectoryName(path));
+            ProDirectoryUtil.CreateDirectory(Path.GetDirectoryName(path));
 
             try
             {
-                using (var fileStream = ProFileStreamUtil.OpenFile(path, FileMode.Create, FileAccess.Write))
+                using (FileStream fileStream = ProFileStreamUtil.OpenFile(path, FileMode.Create, FileAccess.Write))
                 {
-                    var xmlSerializer = GetSerializer(value.GetType());
-                    xmlSerializer.Serialize(fileStream, value);
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                    binaryFormatter.Serialize(fileStream, value);
                 }
             }
             catch (Exception e)
             {
-                ProLog.LogError($"保存 XML 数据失败，错误信息：{e.Message}\n{e.StackTrace}");
+                ProLog.LogError($"保存二进制数据失败，错误信息：{e.Message}\n{e.StackTrace}");
             }
         }
 
@@ -57,19 +53,36 @@ namespace ProFramework
             if (!ProFileUtil.FileExists(path))
             {
                 path = ProPathUtil.GetFilePath(StreamingAssetsPath, key, DataExtension);
-
                 if (!ProFileUtil.FileExists(path))
                 {
                     ProLog.LogWarning($"文件 {key} 未找到, 返回默认实例！");
-                    return Activator.CreateInstance(type);
+                    return Activator.CreateInstance(type); // 或者返回 null
                 }
             }
 
-            using (var fileStream = ProFileStreamUtil.OpenFile(path, FileMode.Open, FileAccess.Read))
+            object value;
+            try
             {
-                var xmlSerializer = GetSerializer(type);
-                return xmlSerializer.Deserialize(fileStream);
+                using (FileStream fileStream = ProFileStreamUtil.OpenFile(path, FileMode.Open, FileAccess.Read))
+                {
+                    BinaryFormatter binaryFormatter = new BinaryFormatter();
+                    value = binaryFormatter.Deserialize(fileStream);
+                }
             }
+            catch (Exception e)
+            {
+                ProLog.LogError($"加载二进制数据失败，错误信息：{e.Message}\n{e.StackTrace}");
+                return Activator.CreateInstance(type); // 或者返回 null
+            }
+
+            // 确保反序列化的对象是请求的类型
+            if (value != null && type.IsInstanceOfType(value))
+            {
+                return value;
+            }
+
+            // 如果类型不匹配，返回 null
+            return Activator.CreateInstance(type);
         }
 
         protected override bool OnDelete(string key)
@@ -84,7 +97,7 @@ namespace ProFramework
                 }
                 catch (Exception e)
                 {
-                    ProLog.LogError($"删除 XML 文件失败，错误信息：{e.Message}\n{e.StackTrace}");
+                    ProLog.LogError($"删除二进制文件失败，错误信息：{e.Message}\n{e.StackTrace}");
                     return false;
                 }
             }
@@ -106,16 +119,11 @@ namespace ProFramework
                 }
                 catch (Exception e)
                 {
-                    ProLog.LogError($"清理 XML 文件失败，错误信息：{e.Message}\n{e.StackTrace}");
+                    ProLog.LogError($"清理二进制文件失败，错误信息：{e.Message}\n{e.StackTrace}");
                 }
             }
 
-            ProLog.LogInfo($"已清理 {files.Length} 个 XML 文件。");
-        }
-
-        private XmlSerializer GetSerializer(Type type)
-        {
-            return _xmlSerializerCache.GetOrAdd(type, t => new XmlSerializer(t));
+            ProLog.LogInfo($"已清理 {files.Length} 个二进制文件。");
         }
     }
 }

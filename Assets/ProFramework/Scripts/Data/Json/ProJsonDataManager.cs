@@ -14,6 +14,7 @@ namespace ProFramework
 
         protected override string DataString => ProConst.Json;
         protected override EProDataType DataType => EProDataType.Json;
+        protected override string DataExtension => "json";
 
         private ProJsonDataManager()
         {
@@ -31,7 +32,7 @@ namespace ProFramework
 
         protected override void OnSave(string key, object value)
         {
-            string path = ProPathUtil.GetFilePath(PersistentDataPath, key, "json");
+            string path = ProPathUtil.GetFilePath(PersistentDataPath, key, DataExtension);
             ProDirectoryUtil.CreateDirectory(ProPathUtil.GetDirectoryName(path));
 
             string jsonStr = Serialize(value);
@@ -52,10 +53,10 @@ namespace ProFramework
 
         protected override object OnLoad(string key, Type type)
         {
-            string path = ProPathUtil.GetFilePath(PersistentDataPath, key, "json");
+            string path = ProPathUtil.GetFilePath(PersistentDataPath, key, DataExtension);
             if (!ProFileUtil.FileExists(path))
             {
-                path = ProPathUtil.GetFilePath(StreamingAssetsPath, key, "json");
+                path = ProPathUtil.GetFilePath(StreamingAssetsPath, key, DataExtension);
                 if (!ProFileUtil.FileExists(path))
                 {
                     ProLog.LogWarning($"文件 {key} 未找到, 返回默认实例！");
@@ -69,7 +70,7 @@ namespace ProFramework
 
         protected override bool OnDelete(string key)
         {
-            string path = ProPathUtil.GetFilePath(PersistentDataPath, key, "json");
+            string path = ProPathUtil.GetFilePath(PersistentDataPath, key, DataExtension);
             if (ProFileUtil.FileExists(path))
             {
                 try
@@ -92,7 +93,7 @@ namespace ProFramework
 
         protected override void OnClear()
         {
-            string[] files = ProFileUtil.GetFiles(PersistentDataPath, "*.json");
+            string[] files = ProFileUtil.GetFiles(PersistentDataPath, DataExtension);
             foreach (string file in files)
             {
                 try

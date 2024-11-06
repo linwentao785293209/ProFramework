@@ -11,6 +11,7 @@ namespace ProFramework
     {
         protected override string DataString => ProConst.PlayerPrefs;
         protected override EProDataType DataType => EProDataType.PlayerPrefs;
+        protected override string DataExtension => "";
 
         private ProPlayerPrefsDataManager()
         {
