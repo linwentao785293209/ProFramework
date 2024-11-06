@@ -124,8 +124,9 @@ namespace ProFramework
         /// <summary>
         /// 获取指定目录下的所有文件。
         /// </summary>
-        public static string[] GetFiles(string directory, string searchPattern = "*.*")
+        public static string[] GetFiles(string directory, string extension = "*")
         {
+            string searchPattern = $"*.{extension}";
             return Directory.GetFiles(directory, searchPattern);
         }
     }
